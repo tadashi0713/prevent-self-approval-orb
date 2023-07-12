@@ -46,23 +46,26 @@ workflows:
           type: approval
           requires:
             - dummy-build-and-test
+          filters: *filters
       - prevent-self-approval/verify:
           requires:
             - wait-for-approval
-      - deploy:
+          filters: *filters
+      - dummy-deploy:
           requires:
             - prevent-self-approval/verify
+          filters: *filters
 
       # The orb must be re-packed for publishing, and saved to the workspace.
       - orb-tools/pack:
           filters: *release-filters
       - orb-tools/publish:
-          orb_name: <namespace>/<orb-name>
+          orb_name: tadashi0713/prevent-self-approval
           vcs_type: << pipeline.project.type >>
           pub_type: production
           # Ensure this job requires all test jobs and the pack job.
           requires:
             - orb-tools/pack
             - command-test
-          context: <publishing-context>
+          context: orb-publishing
           filters: *release-filters
