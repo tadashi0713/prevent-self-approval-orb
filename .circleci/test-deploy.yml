@@ -66,6 +66,6 @@ workflows:
           # Ensure this job requires all test jobs and the pack job.
           requires:
             - orb-tools/pack
-            - command-test
+            - dummy-deploy
           context: orb-publishing
           filters: *release-filters
