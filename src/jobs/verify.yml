@@ -4,4 +4,6 @@ description: >
 executor: default
 
 steps:
-  - run: <<include(scripts/verify.sh)>>
+  - run:
+      name: Verify to prevent self-approval
+      command: <<include(scripts/verify.sh)>>
