@@ -1,9 +1,8 @@
 description: >
   Sample description
 
-executor: 
-  - docker:
-      image: cimg/base:current
+- docker:
+    image: cimg/base:current
 
 steps:
   - command: <<include(scripts/verify.sh)>>
