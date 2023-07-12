@@ -1,3 +1,5 @@
+#!/bin/bash -eu
+
 COMMITTED_BY=$(curl -s -H "Circle-Token: $CIRCLE_TOKEN" "https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}" | jq -r .started_by)
 
 COMMITTER=$(curl -s -H "Circle-Token: $CIRCLE_TOKEN" "https://circleci.com/api/v2/user/${COMMITTED_BY}")
