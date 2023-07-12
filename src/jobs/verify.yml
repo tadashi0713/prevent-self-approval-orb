@@ -1,8 +1,7 @@
 description: >
   Sample description
 
-- docker:
-    image: cimg/base:current
+executor: default
 
 steps:
   - command: <<include(scripts/verify.sh)>>
